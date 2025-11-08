@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.css" />
+    <script type="module" src="dist/app.js" defer></script>
+
+    <title>BMI</title>
+  </head>
+  <body>
+    <h1>BMI CALC</h1>
+
+    <div class="main-container">
+      <form id="formId">
+        <label for="IdHeight">HEIGHT (m)</label>
+        <input type="text" id="IdHeight" value="" />
+        <label for="IdWeight">WEIGHT (kg)</label>
+        <input type="text" id="IdWeight" value="" />
+        <div>
+          <input type="radio" id="genderW" name="drone" value="Women" checked />
+          <label for="genderW">Woman</label>
+        </div>
+
+        <div>
+          <input type="radio" id="genderM" name="drone" value="Man" />
+          <label for="genderM">Man</label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div id="entry"></div>
+    </div>
+  </body>
+</html>
