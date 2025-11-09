@@ -46,13 +46,28 @@ export function drawBoard(bw, bh, ctx, height, weight) {
       let prevHeight = j * 5 + 145;
       let nextHeight = (j + 1) * 5 + 145;
       if (
-        prevWeight < weight &&
-        nextWeight >= weight &&
-        prevHeight < height * 100 &&
-        nextHeight >= height * 100
+        prevWeight <= weight &&
+        nextWeight > weight &&
+        prevHeight <= height * 100 &&
+        nextHeight > height * 100
       ) {
-        colorGrid(ctx, "red", i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh);
+        colorGrid(ctx, "black", i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh);
         continue;
+      }
+      // console.log(calculateBMI(nextWeight, nextHeight)[1]);
+      // console.log(
+      //   `W: ${nextWeight} H: ${nextHeight / 100} BMI: ${
+      //     calculateBMI(nextHeight / 100, nextWeight)[1]
+      //   }`
+      // );
+      if (calculateBMI(nextHeight / 100, prevWeight)[1] === "Underweight") {
+        colorGrid(ctx, "white", i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh);
+      } else if (calculateBMI(nextHeight / 100, prevWeight)[1] === "Correct") {
+        colorGrid(ctx, "green", i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh);
+      } else if (calculateBMI(nextHeight / 100, prevWeight)[1] === "Overweight") {
+        colorGrid(ctx, "orange", i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh);
+      } else if (calculateBMI(nextHeight / 100, prevWeight)[1] === "Obese") {
+        colorGrid(ctx, "red", i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh);
       }
 
       //   else {console.log("IT SUCKS");}
@@ -65,8 +80,8 @@ export function drawBoard(bw, bh, ctx, height, weight) {
 function colorGrid(ctx, color, i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh) {
   ctx.fillStyle = `${color}`;
   ctx.fillRect(
-    marginLeft + i * cellWidth,
-    bh - marginBottom - (j + 1) * cellHeight,
+    marginLeft + (i - 1) * cellWidth,
+    bh - marginBottom - j * cellHeight,
     cellWidth,
     cellHeight
   );
