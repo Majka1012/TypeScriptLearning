@@ -92,7 +92,7 @@ button:hover {
   font-family: "Poppins", sans-serif;
   color: #1d3557;
 }
-.entry {
-  display: flex;
-  align-items: center;
+
+#grid-canvas {
+  padding-bottom: 0;
 }
