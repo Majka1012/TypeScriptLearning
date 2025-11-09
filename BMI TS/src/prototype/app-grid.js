@@ -42,7 +42,19 @@ export function drawBoard(bw, bh, ctx, height, weight) {
       }
 
       if (prevWeight <= weight && nextWeight > weight && prevHeight <= height * 100 && nextHeight > height * 100) {
-        colorGrid(ctx, "#1d3557", i, j, marginLeft + 2.8, marginBottom - 2.8, cellWidth, cellHeight, bh, 0.7);
+        const scale = 0.7;
+        colorGrid(
+          ctx,
+          "#1d3557",
+          i,
+          j,
+          marginLeft + ((1 - scale) / 2) * cellWidth,
+          marginBottom - ((1 - scale) / 2) * cellHeight,
+          cellWidth,
+          cellHeight,
+          bh,
+          scale
+        );
       }
     }
   }
