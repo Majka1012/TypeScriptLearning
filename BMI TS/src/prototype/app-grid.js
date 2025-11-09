@@ -8,7 +8,7 @@ export function drawBoard(bw, bh, ctx, height, weight) {
   const cellHeight = (bh - marginBottom) / rows;
   ctx.clearRect(0, 0, bw, bh);
 
-  ctx.fillStyle = "#1d3557";
+  ctx.fillStyle = "#1d2c40ff";
   ctx.font = "10px Arial";
   ctx.textAlign = "center";
   ctx.textBaseline = "top";
@@ -32,17 +32,17 @@ export function drawBoard(bw, bh, ctx, height, weight) {
       let nextHeight = (j + 1) * 5 + 145;
       let BMI = calculateBMI(prevHeight / 100, prevWeight)[1];
       if (BMI === "Underweight") {
-        colorGrid(ctx, "white", i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh);
+        colorGrid(ctx, "#f3ecfaff", i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh);
       } else if (BMI === "Correct") {
-        colorGrid(ctx, "green", i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh);
+        colorGrid(ctx, "#4be173ff", i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh);
       } else if (BMI === "Overweight") {
-        colorGrid(ctx, "orange", i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh);
+        colorGrid(ctx, "#e1a54bff", i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh);
       } else if (BMI === "Obese") {
-        colorGrid(ctx, "red", i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh);
+        colorGrid(ctx, "#e14b4bff", i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh);
       }
 
       if (prevWeight <= weight && nextWeight > weight && prevHeight <= height * 100 && nextHeight > height * 100) {
-        colorGrid(ctx, "black", i, j, marginLeft + 2.5, marginBottom - 2.5, cellWidth, cellHeight, bh, 0.7);
+        colorGrid(ctx, "#1d3557", i, j, marginLeft + 2.8, marginBottom - 2.8, cellWidth, cellHeight, bh, 0.7);
       }
     }
   }
