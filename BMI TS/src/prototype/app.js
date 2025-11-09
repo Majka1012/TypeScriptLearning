@@ -18,7 +18,7 @@ const renderCalculaton = (height, weight, gender) => {
   const output = document.createElement("div");
   output.className = "BMI-calculated"; //Klasa movie-element jest w css
   output.innerHTML = `
-      <h2>You'r BMI to: ${BMI.toFixed(1)} and it's ${Condition}</h2>
+      <h2>Your BMI: ${BMI.toFixed(1)} and it's ${Condition}</h2>
   `;
   const output2 = document.createElement("div");
   output2.className = "BMI-calculated"; //Klasa movie-element jest w css
