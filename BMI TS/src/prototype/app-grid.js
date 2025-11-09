@@ -1,3 +1,4 @@
+import { calculateBMI } from "./calculateBMI.js";
 export function drawBoard(bw, bh, ctx, height, weight) {
   const cols = 20;
   const rows = 10;
@@ -40,24 +41,33 @@ export function drawBoard(bw, bh, ctx, height, weight) {
   }
   for (let i = 1; i <= cols; i++) {
     for (let j = 1; j <= rows; j++) {
+      let prevWeight = i * 5 + 35;
+      let nextWeight = (i + 1) * 5 + 35;
+      let prevHeight = j * 5 + 145;
+      let nextHeight = (j + 1) * 5 + 145;
       if (
-        i * 5 + 35 < weight &&
-        (i + 1) * 5 + 35 >= weight &&
-        j * 5 + 145 < height * 100 &&
-        (j + 1) * 5 + 145 >= height * 100
+        prevWeight < weight &&
+        nextWeight >= weight &&
+        prevHeight < height * 100 &&
+        nextHeight >= height * 100
       ) {
-        console.log(`i: ${i}, j: ${j}`);
-        ctx.fillRect(
-          marginLeft + i * cellWidth,
-          bh - marginBottom - (j + 1) * cellHeight,
-          cellWidth,
-          cellHeight
-        );
-        console.log("WORKED");
+        colorGrid(ctx, "red", i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh);
+        continue;
       }
+
       //   else {console.log("IT SUCKS");}
     }
   }
 
-  console.log(`weight: ${weight} and  height: ${height * 100}`);
+  //   console.log(`weight: ${weight} and  height: ${height * 100}`);
+}
+
+function colorGrid(ctx, color, i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh) {
+  ctx.fillStyle = `${color}`;
+  ctx.fillRect(
+    marginLeft + i * cellWidth,
+    bh - marginBottom - (j + 1) * cellHeight,
+    cellWidth,
+    cellHeight
+  );
 }

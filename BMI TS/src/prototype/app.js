@@ -1,5 +1,6 @@
 //ORYGINAL JS FILE BEFORE TYPESCRIPT
-import { drawBoard } from "./app-proto-grid.js";
+import { drawBoard } from "./app-grid.js";
+import { calculateBMI } from "./calculateBMI.js";
 
 const formCalc = document.querySelector("form");
 const userInputs = formCalc.querySelectorAll("input");
@@ -10,21 +11,6 @@ formCalc.addEventListener("submit", (event) => {
   // console.log("click");
   formCalc.reset();
 });
-const calculateBMI = (height, weight) => {
-  const BMI = weight / (height * height);
-  if (BMI < 18.5) {
-    return [BMI, "Underweight"];
-  }
-  if (BMI < 25) {
-    return [BMI, "Correct"];
-  }
-  if (BMI < 30) {
-    return [BMI, "Overweight"];
-  } else {
-    return [BMI, "Obese"];
-  }
-  //   console.log(weight / (height * height));
-};
 
 const renderCalculaton = (height, weight, gender) => {
   formCalc.classList.toggle("visible");
