@@ -38,4 +38,26 @@ export function drawBoard(bw, bh, ctx, height, weight) {
     const y = bh - marginBottom - (i - 0.5) * cellHeight;
     ctx.fillText(i * 5 + 145, marginLeft - 5, y);
   }
+  for (let i = 1; i <= cols; i++) {
+    for (let j = 1; j <= rows; j++) {
+      if (
+        i * 5 + 35 < weight &&
+        (i + 1) * 5 + 35 >= weight &&
+        j * 5 + 145 < height * 100 &&
+        (j + 1) * 5 + 145 >= height * 100
+      ) {
+        console.log(`i: ${i}, j: ${j}`);
+        ctx.fillRect(
+          marginLeft + i * cellWidth,
+          bh - marginBottom - (j + 1) * cellHeight,
+          cellWidth,
+          cellHeight
+        );
+        console.log("WORKED");
+      }
+      //   else {console.log("IT SUCKS");}
+    }
+  }
+
+  console.log(`weight: ${weight} and  height: ${height * 100}`);
 }
