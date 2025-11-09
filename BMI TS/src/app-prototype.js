@@ -1,4 +1,6 @@
 //ORYGINAL JS FILE BEFORE TYPESCRIPT
+import { drawBoard } from "./app-proto-grid.js";
+
 const formCalc = document.querySelector("form");
 const userInputs = formCalc.querySelectorAll("input");
 
@@ -49,49 +51,9 @@ const renderCalculaton = (height, weight, gender) => {
 
   // ctx.fillRect(1, 1, 10, 20);
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  drawBoard(canvas.width, canvas.height, ctx);
+  drawBoard(canvas.width, canvas.height, ctx, height, weight);
 };
-const drawBoard = (bw, bh, ctx) => {
-  const cols = 20;
-  const rows = 10;
-  const marginBottom = 20;
-  const marginLeft = 25;
-  const cellWidth = (bw - marginLeft) / cols;
-  const cellHeight = (bh - marginBottom) / rows;
-  ctx.clearRect(0, 0, bw, bh);
-  ctx.beginPath();
-  for (let i = 0; i <= cols; i++) {
-    const x = marginLeft + i * cellWidth;
-    ctx.moveTo(x, 0);
-    ctx.lineTo(x, bh - marginBottom);
-  }
 
-  for (let i = 0; i <= rows; i++) {
-    const y = bh - marginBottom - i * cellHeight;
-    ctx.moveTo(marginLeft, y);
-    ctx.lineTo(bw, y);
-  }
-
-  ctx.strokeStyle = "grey";
-  ctx.stroke();
-
-  ctx.fillStyle = "black";
-  ctx.font = "10px Arial";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "top";
-
-  for (let i = 1; i <= cols; i++) {
-    const x = marginLeft + (i - 0.5) * cellWidth;
-    ctx.fillText(i * 5 + 35, x, bh - marginBottom + 3);
-  }
-  // Etykiety osi Y
-  ctx.textAlign = "right";
-  ctx.textBaseline = "middle";
-  for (let i = 1; i <= rows; i++) {
-    const y = bh - marginBottom - (i - 0.5) * cellHeight;
-    ctx.fillText(i * 5 + 145, marginLeft - 5, y);
-  }
-};
 const addMovieHandler = () => {
   const Height = userInputs[0].value;
   const Weight = userInputs[1].value;
