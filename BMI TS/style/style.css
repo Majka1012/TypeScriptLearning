@@ -2,7 +2,7 @@
 body {
   font-family: "Poppins", sans-serif;
   background: linear-gradient(135deg, #fce4ec, #e3f2fd);
-  height: 100rem;
+  height: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -92,7 +92,11 @@ button:hover {
   font-family: "Poppins", sans-serif;
   color: #1d3557;
 }
-
+.BMI-calculated p {
+  padding: 0;
+  margin: 0;
+  font-size: 0.8rem;
+}
 #grid-canvas {
   padding-bottom: 0;
 }

@@ -24,7 +24,8 @@ const renderCalculaton = (height, weight, gender) => {
   output2.className = "BMI-calculated"; //Klasa movie-element jest w css
   output2.id = "grid-canvas";
   output2.innerHTML = `
-      <canvas id="canvas" width="400px" height="200px"></canvas>`;
+      <canvas id="canvas" width="400px" height="200px"></canvas>
+      <p>*Visualisation is imperfect, please go by your BMI</p>`;
   const listRoot = document.getElementById("entry");
   if (listRoot.hasChildNodes()) {
     listRoot.innerHTML = "";
