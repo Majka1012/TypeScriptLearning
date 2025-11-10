@@ -1,5 +1,7 @@
-const formCalc = document.querySelector("form")!;
+import { calculateBMI } from "./calculateBMI.js";
+import { drawBoard } from "./app-grid.js";
 
+const formCalc = document.querySelector("form")!;
 // if(formCalc===null){throw.console.error("SOMETHING WRONG");
 // }
 const userInputs = formCalc?.querySelectorAll("input")!;
@@ -12,38 +14,32 @@ formCalc.addEventListener("submit", (event) => {
   // console.log("click");
   formCalc.reset();
 });
-const calculateBMI = (height:number, weight:number):[number,string] => {
-  const BMI = weight / (height * height);
-  if (BMI < 18.5) {
-    return [BMI, "Underweight"];
-  }
-  if (BMI < 25) {
-    return [BMI, "Correct"];
-  }
-  if (BMI < 30) {
-    return [BMI, "Overweight"];
-  } else {
-    return [BMI, "Obese"];
-  }
-  //   console.log(weight / (height * height));
-};
 
 const renderCalculaton = (height: number, weight: number) => {
-  formCalc.classList.toggle("visible");
-  const output = document.createElement("div");
+ formCalc.classList.toggle("visible");
   const [BMI, Condition] = calculateBMI(height, weight);
+  const output = document.createElement("div");
   output.className = "BMI-calculated"; //Klasa movie-element jest w css
   output.innerHTML = `
-      <h2>You'r BMI to: ${BMI.toFixed(1)} and it's ${Condition}</h2>
-
+      <h2>Your BMI: ${BMI.toFixed(1)} and it's ${Condition}</h2>
   `;
-
+  const output2 = document.createElement("div");
+  output2.className = "BMI-calculated"; //Klasa movie-element jest w css
+  output2.id = "grid-canvas";
+  output2.innerHTML = `
+      <canvas id="canvas" width="400px" height="200px"></canvas>
+      <p>*Visualisation is imperfect, please go by your BMI</p>`;
   const listRoot = document.getElementById("entry")!;
   if (listRoot.hasChildNodes()) {
-    listRoot.children[0]?.remove();
+    listRoot.innerHTML = "";
     // listRoot.firstChild.remove();
   }
   listRoot.append(output);
+  listRoot.append(output2);
+
+  const canvas = document.getElementById("canvas")as HTMLCanvasElement;;
+
+  drawBoard(canvas.width, canvas.height, canvas, height, weight);
 };
 
 const addMovieHandler = () => {
