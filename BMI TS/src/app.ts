@@ -11,7 +11,6 @@ const userInputs = formCalc?.querySelectorAll("input")!;
 formCalc.addEventListener("submit", (event) => {
   event.preventDefault();
   addMovieHandler();
-  // console.log("click");
   formCalc.reset();
 });
 
@@ -19,12 +18,12 @@ const renderCalculaton = (height: number, weight: number) => {
  formCalc.classList.toggle("visible");
   const [BMI, Condition] = calculateBMI(height, weight);
   const output = document.createElement("div");
-  output.className = "BMI-calculated"; //Klasa movie-element jest w css
+  output.className = "BMI-calculated"; 
   output.innerHTML = `
       <h2>Your BMI: ${BMI.toFixed(1)} and it's ${Condition}</h2>
   `;
   const output2 = document.createElement("div");
-  output2.className = "BMI-calculated"; //Klasa movie-element jest w css
+  output2.className = "BMI-calculated"; 
   output2.id = "grid-canvas";
   output2.innerHTML = `
       <canvas id="canvas" width="400px" height="200px"></canvas>
@@ -32,7 +31,6 @@ const renderCalculaton = (height: number, weight: number) => {
   const listRoot = document.getElementById("entry")!;
   if (listRoot.hasChildNodes()) {
     listRoot.innerHTML = "";
-    // listRoot.firstChild.remove();
   }
   listRoot.append(output);
   listRoot.append(output2);
@@ -49,8 +47,6 @@ if(!userInputs[0]||!userInputs[1]){ alert("Please enter valid values.");return}
  
   console.log();
   if (
-    // Height.trim() === "" ||
-    // Weight.trim() === "" ||
     !Height||
     !Weight||
     isNaN(Height)||
@@ -62,7 +58,7 @@ if(!userInputs[0]||!userInputs[1]){ alert("Please enter valid values.");return}
   ) {
     alert("Please enter valid values.");
     return;
-    //trim delets white spaces
+
   }
 
   renderCalculaton(Height, Weight);

@@ -2,7 +2,6 @@ import { calculateBMI } from "./calculateBMI.js";
 export function drawBoard(bw:number, bh:number, canvas:HTMLCanvasElement, height:number, weight:number) {
     const ctx = canvas.getContext("2d")!;
   
-    // ctx.fillRect(1, 1, 10, 20);
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   
   const cols = 20;
@@ -17,12 +16,12 @@ export function drawBoard(bw:number, bh:number, canvas:HTMLCanvasElement, height
   ctx.font = "10px Arial";
   ctx.textAlign = "center";
   ctx.textBaseline = "top";
-  //X AXIS
+  //X AXIS LABEL
   for (let i = 1; i <= cols; i++) {
     const x = marginLeft + (i - 1) * cellWidth;
     ctx.fillText(String(i * 5 + 35), x, bh - marginBottom + 3);
   }
-  //Y AXIS
+  //Y AXIS LABEL
   ctx.textAlign = "right";
   ctx.textBaseline = "middle";
   for (let i = 1; i <= rows; i++) {
