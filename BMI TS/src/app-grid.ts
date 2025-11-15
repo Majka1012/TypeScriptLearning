@@ -1,9 +1,9 @@
 import { calculateBMI } from "./calculateBMI.js";
-export function drawBoard(bw:number, bh:number, canvas:HTMLCanvasElement, height:number, weight:number) {
-    const ctx = canvas.getContext("2d")!;
-  
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-  
+export function drawBoard(bw: number, bh: number, canvas: HTMLCanvasElement, height: number, weight: number) {
+  const ctx = canvas.getContext("2d")!;
+
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
   const cols = 20;
   const rows = 10;
   const marginBottom = 20;
@@ -82,7 +82,18 @@ export function drawBoard(bw:number, bh:number, canvas:HTMLCanvasElement, height
   //   console.log(`weight: ${weight} and  height: ${height * 100}`);
 }
 
-function colorGrid(canvas:HTMLCanvasElement, color:string, i:number, j:number, marginLeft:number, marginBottom:number, cellWidth:number, cellHeight:number, bh:number, scale = 1) {
+function colorGrid(
+  canvas: HTMLCanvasElement,
+  color: string,
+  i: number,
+  j: number,
+  marginLeft: number,
+  marginBottom: number,
+  cellWidth: number,
+  cellHeight: number,
+  bh: number,
+  scale = 1
+) {
   const ctx = canvas.getContext("2d")!;
   ctx.fillStyle = `${color}`;
   ctx.fillRect(

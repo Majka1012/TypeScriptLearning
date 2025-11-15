@@ -29,6 +29,12 @@ h1 {
   justify-content: center;
   gap: 1rem;
 }
+.info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
 
 /* Form container styling */
 form {
