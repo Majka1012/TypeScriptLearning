@@ -59,17 +59,17 @@ const renderCalculaton = (height, weight) => {
     render("div", "BMI-calculated", html2, "grid-canvas", "entry");
     const canvas = document.getElementById("canvas");
     drawBoard(canvas.width, canvas.height, canvas, height, weight);
-    const htmlUnderweight = `Having underweight means your body mass is below the range normally required for good health. Your body may lack the nutrition it needs to maintain its tissues and functions. If your BMI is below 18.5, you should see a healthcare provider for testing. Having underweight can cause serious health risks or be a sign of a serious underlying condition.`;
+    const htmlUnderweight = `Being underweight means your body mass is below the range normally required for good health. Your body may lack the nutrition it needs to maintain its tissues and functions. If your BMI is below 18.5, you should see a healthcare provider for testing. Having underweight can cause serious health risks or be a sign of a serious underlying condition.`;
     const htmlOverweight = `Being overweight is having more body fat than is considered healthy. Being overweight is especially common where food supplies are plentiful and lifestyles are sedentary. `;
     const htmlObese = `Obesity is a medical condition, considered by multiple organizations to be a disease, in which excess body fat has accumulated to such an extent that it can have negative effects on health. Obesity is a leading preventable cause of death worldwide. Please go to your doctor!`;
     if (Condition === "Underweight") {
-        render("p", "BMI-calculated", htmlUnderweight, "InfoUnderW", "InfoEntry");
+        render("p", "BMI-Info", htmlUnderweight, "InfoUnderW", "InfoEntry");
     }
     if (Condition === "Overweight") {
-        render("p", "BMI-calculated", htmlOverweight, "InfoOverW", "InfoEntry");
+        render("p", "BMI-Info", htmlOverweight, "InfoOverW", "InfoEntry");
     }
     if (Condition === "Obese") {
-        render("p", "BMI-calculated", htmlObese, "InfoObese", "InfoEntry");
+        render("p", "BMI-Info", htmlObese, "InfoObese", "InfoEntry");
     }
 };
 const render = (ElCreate, className, innerHTML, id, root) => {
@@ -80,13 +80,13 @@ const render = (ElCreate, className, innerHTML, id, root) => {
         output.id = id;
     }
     if (!root) {
-        const Eroor = new Error("WRONG ROOT");
+        throw new Error("WRONG ROOT");
     }
     const listRoot = document.getElementById(root);
-    if (listRoot.hasChildNodes()) {
+    if (listRoot.children.length == 2) {
         listRoot.innerHTML = "";
     }
     listRoot.append(output);
-    console.log(`Rendering ${id}`);
+    console.log(`Rendering ${output}`);
 };
 //# sourceMappingURL=app.js.map

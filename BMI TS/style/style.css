@@ -103,6 +103,16 @@ button:hover {
   margin: 0;
   font-size: 0.8rem;
 }
+.BMI-Info {
+  padding: 1rem 2rem;
+  margin: 1rem;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: #1d3557;
+}
 #grid-canvas {
   padding-bottom: 0;
 }
