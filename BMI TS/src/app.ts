@@ -63,22 +63,38 @@ const renderCalculaton = (height: number, weight: number) => {
   const html1 = `<h2>Your BMI: ${BMI.toFixed(1)} and it's ${Condition}</h2>`;
   const html2 = `<canvas id="canvas" width="400px" height="200px"></canvas>
   <p>*Visualisation is imperfect, please go by your BMI</p>`;
-  render("div", "BMI-calculated", html1, "BMILabel");
-  render("div", "BMI-calculated", html2, "grid-canvas");
+
+  render("div", "BMI-calculated", html1, "BMILabel", "entry");
+  render("div", "BMI-calculated", html2, "grid-canvas", "entry");
 
   const canvas = document.getElementById("canvas") as HTMLCanvasElement;
-
   drawBoard(canvas.width, canvas.height, canvas, height, weight);
+
+  const htmlUnderweight = `Having underweight means your body mass is below the range normally required for good health. Your body may lack the nutrition it needs to maintain its tissues and functions. If your BMI is below 18.5, you should see a healthcare provider for testing. Having underweight can cause serious health risks or be a sign of a serious underlying condition.`;
+  const htmlOverweight = `Being overweight is having more body fat than is considered healthy. Being overweight is especially common where food supplies are plentiful and lifestyles are sedentary. `;
+  const htmlObese = `Obesity is a medical condition, considered by multiple organizations to be a disease, in which excess body fat has accumulated to such an extent that it can have negative effects on health. Obesity is a leading preventable cause of death worldwide. Please go to your doctor!`;
+  if (Condition === "Underweight") {
+    render("p", "BMI-calculated", htmlUnderweight, "InfoUnderW", "InfoEntry");
+  }
+  if (Condition === "Overweight") {
+    render("p", "BMI-calculated", htmlOverweight, "InfoOverW", "InfoEntry");
+  }
+  if (Condition === "Obese") {
+    render("p", "BMI-calculated", htmlObese, "InfoObese", "InfoEntry");
+  }
 };
 
-const render = (ElCreate: string, className: string, innerHTML: string, id: string) => {
+const render = (ElCreate: string, className: string, innerHTML: string, id: string, root: string) => {
   const output = document.createElement(ElCreate);
   output.className = className;
   output.innerHTML = innerHTML;
   if (id) {
     output.id = id;
   }
-  const listRoot = document.getElementById("entry")!;
+  if (!root) {
+    const Eroor = new Error("WRONG ROOT");
+  }
+  const listRoot = document.getElementById(root)!;
   if (listRoot.hasChildNodes()) {
     listRoot.innerHTML = "";
   }
