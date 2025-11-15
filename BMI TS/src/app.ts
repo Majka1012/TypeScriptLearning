@@ -72,22 +72,25 @@ const renderCalculaton = (height: number, weight: number) => {
 
   const htmlUnderweight = `Being underweight means your body mass is below the range normally required for good health. Your body may lack the nutrition it needs to maintain its tissues and functions. If your BMI is below 18.5, you should see a healthcare provider for testing. Having underweight can cause serious health risks or be a sign of a serious underlying condition.`;
   const htmlOverweight = `Being overweight is having more body fat than is considered healthy. Being overweight is especially common where food supplies are plentiful and lifestyles are sedentary. `;
-  const htmlObese = `Obesity is a medical condition, considered by multiple organizations to be a disease, in which excess body fat has accumulated to such an extent that it can have negative effects on health. Obesity is a leading preventable cause of death worldwide. Please go to your doctor!`;
+  const htmlObese = `Obesity is a medical condition, considered by multiple organizations to be a disease, in which excess body fat has accumulated to such an extent that it can have negative effects on health. Obesity is a leading preventable cause of death worldwide. <br><b>Please go to your doctor!<b><br>`;
   if (Condition === "Underweight") {
-    render("p", "BMI-Info", htmlUnderweight, "InfoUnderW", "InfoEntry");
+    render("p", "BMI-Info", htmlUnderweight, "InfoUnderW", "InfoEntry", "white");
   }
   if (Condition === "Overweight") {
-    render("p", "BMI-Info", htmlOverweight, "InfoOverW", "InfoEntry");
+    render("p", "BMI-Info", htmlOverweight, "InfoOverW", "InfoEntry", "orange");
   }
   if (Condition === "Obese") {
-    render("p", "BMI-Info", htmlObese, "InfoObese", "InfoEntry");
+    render("p", "BMI-Info", htmlObese, "InfoObese", "InfoEntry", "red");
   }
 };
 
-const render = (ElCreate: string, className: string, innerHTML: string, id: string, root: string) => {
+const render = (ElCreate: string, className: string, innerHTML: string, id: string, root: string, color?: string) => {
   const output = document.createElement(ElCreate);
   output.className = className;
   output.innerHTML = innerHTML;
+  if (color) {
+    output.style.backgroundColor = color;
+  }
   if (id) {
     output.id = id;
   }
@@ -95,7 +98,7 @@ const render = (ElCreate: string, className: string, innerHTML: string, id: stri
     throw new Error("WRONG ROOT");
   }
   const listRoot = document.getElementById(root)!;
-  if (listRoot.children.length == 2) {
+  if (listRoot.children.length == 2 || ElCreate === "p") {
     listRoot.innerHTML = "";
   }
   listRoot.append(output);
