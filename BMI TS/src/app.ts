@@ -92,11 +92,12 @@ const render = (ElCreate: string, className: string, innerHTML: string, id: stri
     output.id = id;
   }
   if (!root) {
-    const Eroor = new Error("WRONG ROOT");
+    throw new Error("WRONG ROOT");
   }
   const listRoot = document.getElementById(root)!;
   if (listRoot.hasChildNodes()) {
     listRoot.innerHTML = "";
   }
   listRoot.append(output);
+  console.log(`Rendering ${id}`);
 };
