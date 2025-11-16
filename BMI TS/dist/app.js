@@ -1,5 +1,6 @@
 import { BMIClass } from "./calculateBMI.js";
 import { drawBoard } from "./app-grid.js";
+import { Render } from "./render.js";
 const formCalc = document.querySelector("form");
 // if(formCalc===null){throw.console.error("SOMETHING WRONG");
 // }
@@ -57,78 +58,24 @@ const renderCalculaton = (height, weight) => {
     const html1 = `<h2>Your BMI: ${BMI.toFixed(1)} and it's ${Condition}</h2>`;
     const html2 = `<canvas id="canvas" width="400px" height="200px"></canvas>
   <p>*Visualisation is imperfect, please go by your BMI</p>`;
-    render("div", "BMI-calculated", html1, "BMILabel", "entry");
-    render("div", "BMI-calculated", html2, "grid-canvas", "entry");
+    new Render("div", "BMI-calculated", html1, "BMILabel", "entry");
+    new Render("div", "BMI-calculated", html2, "grid-canvas", "entry");
     const canvas = document.getElementById("canvas");
     drawBoard(canvas.width, canvas.height, canvas, height, weight);
     const htmlUnderweight = `Being underweight means your body mass is below the range normally required for good health. Your body may lack the nutrition it needs to maintain its tissues and functions. If your BMI is below 18.5, you should see a healthcare provider for testing. Having underweight can cause serious health risks or be a sign of a serious underlying condition.`;
     const htmlOverweight = `Being overweight is having more body fat than is considered healthy. Being overweight is especially common where food supplies are plentiful and lifestyles are sedentary. `;
     const htmlObese = `Obesity is a medical condition, considered by multiple organizations to be a disease, in which excess body fat has accumulated to such an extent that it can have negative effects on health. Obesity is a leading preventable cause of death worldwide. <br><b>Please go to your doctor!<b><br>`;
     if (Condition === "Underweight") {
-        render("p", "BMI-Info", htmlUnderweight, "InfoUnderW", "InfoEntry", "white");
+        new Render("p", "BMI-Info", htmlUnderweight, "InfoUnderW", "InfoEntry", "white");
     }
     else if (Condition === "Overweight") {
-        render("p", "BMI-Info", htmlOverweight, "InfoOverW", "InfoEntry", "orange");
+        new Render("p", "BMI-Info", htmlOverweight, "InfoOverW", "InfoEntry", "orange");
     }
     else if (Condition === "Obese") {
-        render("p", "BMI-Info", htmlObese, "InfoObese", "InfoEntry", "red");
+        new Render("p", "BMI-Info", htmlObese, "InfoObese", "InfoEntry", "red");
     }
     else {
-        render("p", "", "", "", "InfoEntry");
+        new Render("p", "", "", "", "InfoEntry");
     }
 };
-const render = (ElCreate, className, innerHTML, id, root, color) => {
-    const output = document.createElement(ElCreate);
-    output.className = className;
-    output.innerHTML = innerHTML;
-    if (color) {
-        console.log(`Twój kolor to: ${color}`);
-        output.style.backgroundColor = color;
-    }
-    if (id) {
-        output.id = id;
-    }
-    if (!root) {
-        throw new Error("WRONG ROOT");
-    }
-    const listRoot = document.getElementById(root);
-    if (listRoot.children.length == 2 || ElCreate === "p") {
-        listRoot.innerHTML = "";
-    }
-    listRoot.append(output);
-    console.log(`Rendering ${output}`);
-};
-class Render {
-    ElCreate;
-    className;
-    innerHTML;
-    id;
-    root;
-    color;
-    output;
-    constructor(ElCreate, className, innerHTML, id, root, color) {
-        this.ElCreate = ElCreate;
-        this.className = className;
-        this.innerHTML = innerHTML;
-        this.id = id;
-        this.root = root;
-        this.color = color;
-        this.output = document.createElement(this.ElCreate);
-        this.output.innerHTML = this.innerHTML;
-        this.output.className = this.className;
-        this.output.id = this.id;
-        if (this.color) {
-            this.output.style.backgroundColor = this.color;
-        }
-        this.rendering();
-    }
-    rendering() {
-        const listRoot = document.getElementById(this.root);
-        if (listRoot.children.length == 2 || this.ElCreate === "p") {
-            listRoot.innerHTML = "";
-        }
-        listRoot.append(this.output);
-        console.log(`Rendering ${this.output}`);
-    }
-}
 //# sourceMappingURL=app.js.map
