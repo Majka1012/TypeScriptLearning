@@ -1,1 +1,1 @@
-{"version":3,"file":"calculateBMI.d.ts","sourceRoot":"","sources":["../src/calculateBMI.ts"],"names":[],"mappings":"AAeA,qBAAa,QAAQ;IAGA,MAAM,EAAE,MAAM;IAAS,MAAM,EAAE,MAAM;IAFxD,SAAS,EAAE,MAAM,CAAC;IAClB,SAAS,EAAE,MAAM,CAAC;gBACC,MAAM,EAAE,MAAM,EAAS,MAAM,EAAE,MAAM;IASxD,eAAe;CAWhB"}
+{"version":3,"file":"calculateBMI.d.ts","sourceRoot":"","sources":["../src/calculateBMI.ts"],"names":[],"mappings":"AAAA,qBAAa,QAAQ;IAGA,MAAM,EAAE,MAAM;IAAS,MAAM,EAAE,MAAM;IAFxD,SAAS,EAAE,MAAM,CAAC;IAClB,SAAS,EAAE,MAAM,CAAC;gBACC,MAAM,EAAE,MAAM,EAAS,MAAM,EAAE,MAAM;IASxD,eAAe;CAWhB"}
