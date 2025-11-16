@@ -1,4 +1,4 @@
-import { BMIClass } from "./calculateBMI.js";
+import { calculateBMI } from "./calculateBMI.js";
 import { drawBoard } from "./app-grid.js";
 
 const formCalc = document.querySelector("form")!;
@@ -42,9 +42,7 @@ const addMovieHandler = () => {
 
 const renderCalculaton = (height: number, weight: number) => {
   // formCalc.classList.toggle("visible");
-  const bmi1 = new BMIClass(height, weight);
-  const BMI = bmi1.BMI_Value;
-  const Condition = bmi1.Condition;
+  const [BMI, Condition] = calculateBMI(height, weight);
   // const output = document.createElement("div");
   // output.className = "BMI-calculated";
   // output.innerHTML = `

@@ -1,4 +1,4 @@
-import { BMIClass } from "./calculateBMI.js";
+import { calculateBMI } from "./calculateBMI.js";
 export function drawBoard(bw, bh, canvas, height, weight) {
     const ctx = canvas.getContext("2d");
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -31,7 +31,7 @@ export function drawBoard(bw, bh, canvas, height, weight) {
             let nextWeight = (i + 1) * 5 + 35;
             let prevHeight = j * 5 + 145;
             let nextHeight = (j + 1) * 5 + 145;
-            let BMI = new BMIClass(prevHeight / 100, prevWeight).Condition;
+            let BMI = calculateBMI(prevHeight / 100, prevWeight)[1];
             if (BMI === "Underweight") {
                 colorGrid(canvas, "#f3ecfaff", i, j, marginLeft, marginBottom, cellWidth, cellHeight, bh);
             }
