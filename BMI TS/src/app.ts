@@ -75,12 +75,12 @@ const renderCalculaton = (height: number, weight: number) => {
   const htmlObese = `Obesity is a medical condition, considered by multiple organizations to be a disease, in which excess body fat has accumulated to such an extent that it can have negative effects on health. Obesity is a leading preventable cause of death worldwide. <br><b>Please go to your doctor!<b><br>`;
   if (Condition === "Underweight") {
     render("p", "BMI-Info", htmlUnderweight, "InfoUnderW", "InfoEntry", "white");
-  }
-  if (Condition === "Overweight") {
+  } else if (Condition === "Overweight") {
     render("p", "BMI-Info", htmlOverweight, "InfoOverW", "InfoEntry", "orange");
-  }
-  if (Condition === "Obese") {
+  } else if (Condition === "Obese") {
     render("p", "BMI-Info", htmlObese, "InfoObese", "InfoEntry", "red");
+  } else {
+    render("p", "", "", "", "InfoEntry");
   }
 };
 
@@ -89,6 +89,7 @@ const render = (ElCreate: string, className: string, innerHTML: string, id: stri
   output.className = className;
   output.innerHTML = innerHTML;
   if (color) {
+    console.log(`Twój kolor to: ${color}`);
     output.style.backgroundColor = color;
   }
   if (id) {

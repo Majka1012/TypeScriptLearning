@@ -65,11 +65,14 @@ const renderCalculaton = (height, weight) => {
     if (Condition === "Underweight") {
         render("p", "BMI-Info", htmlUnderweight, "InfoUnderW", "InfoEntry", "white");
     }
-    if (Condition === "Overweight") {
+    else if (Condition === "Overweight") {
         render("p", "BMI-Info", htmlOverweight, "InfoOverW", "InfoEntry", "orange");
     }
-    if (Condition === "Obese") {
+    else if (Condition === "Obese") {
         render("p", "BMI-Info", htmlObese, "InfoObese", "InfoEntry", "red");
+    }
+    else {
+        render("p", "", "", "", "InfoEntry");
     }
 };
 const render = (ElCreate, className, innerHTML, id, root, color) => {
@@ -77,6 +80,7 @@ const render = (ElCreate, className, innerHTML, id, root, color) => {
     output.className = className;
     output.innerHTML = innerHTML;
     if (color) {
+        console.log(`Twój kolor to: ${color}`);
         output.style.backgroundColor = color;
     }
     if (id) {
