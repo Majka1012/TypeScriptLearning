@@ -4,9 +4,7 @@ export class Render {
     BMI;
     Cond;
     output;
-    constructor(templateId, // ID <template>
-    rootId, // gdzie wstawić
-    BMI, Cond) {
+    constructor(templateId, rootId, BMI, Cond) {
         this.templateId = templateId;
         this.rootId = rootId;
         this.BMI = BMI;
@@ -16,9 +14,9 @@ export class Render {
             throw new Error(`Template '${this.templateId}' not found`);
         this.output = templ.content.firstElementChild.cloneNode(true);
         if (this.BMI && this.Cond) {
-            const El1 = this.output.querySelector("bmi-value");
-            const El2 = this.output.querySelector("cond-value");
-            console.log(this.output.querySelector("bmi-value"));
+            const El1 = this.output.querySelector(".bmi-value");
+            const El2 = this.output.querySelector(".cond-value");
+            console.log(this.output.querySelector(".bmi-value"));
             if (!El1 || !El2) {
                 throw new Error("NO EL");
             }
