@@ -15,9 +15,9 @@
     <div class="main-container">
       <form id="formId">
         <label for="IdHeight">HEIGHT (m)</label>
-        <input type="text" id="IdHeight" value="" />
+        <input type="text" id="IdHeight" value="1.7" />
         <label for="IdWeight">WEIGHT (kg)</label>
-        <input type="text" id="IdWeight" value="" />
+        <input type="text" id="IdWeight" value="60" />
         <div>
           <input type="radio" id="genderW" name="drone" value="Women" checked />
           <label for="genderW">Woman</label>
@@ -32,5 +32,31 @@
       <div id="entry"></div>
     </div>
     <div class="info-container" id="InfoEntry"></div>
+
+    <!-- ======================= -->
+    <!--      TEMPLATES          -->
+    <!-- ======================= -->
+
+    <template id="tpl-bmi-result">
+      <div class="BMI-calculated">
+        <h2>Your BMI: <span class="bmi-value"></span> and it's <span class="cond-value"></span></h2>
+        <p>*Visualisation is imperfect, please go by your BMI</p>
+      </div>
+    </template>
+    <template id="nothing"><p></p></template>
+
+    <template id="tpl-info-underweight">
+      <p class="BMI-Info" style="color: white">
+        Being underweight means your body mass is below the range normally required for good health…
+      </p>
+    </template>
+
+    <template id="tpl-info-overweight">
+      <p class="BMI-Info" style="color: orange">Being overweight is having more body fat than is considered healthy…</p>
+    </template>
+
+    <template id="tpl-info-obese">
+      <p class="BMI-Info" style="color: red">Obesity is a medical condition… <b>Please go to your doctor!</b></p>
+    </template>
   </body>
 </html>

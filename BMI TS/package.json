@@ -1,12 +1,16 @@
 {
   "name": "bmi",
   "version": "1.0.0",
-  "description": "",
+  "description": "./src/prototype is folder with oryginal Java Script code (still my code) and other files are type script version of that.",
   "license": "ISC",
   "author": "",
   "type": "commonjs",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@types/node": "^24.10.1"
   }
 }
