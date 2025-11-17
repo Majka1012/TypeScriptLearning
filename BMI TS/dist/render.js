@@ -1,4 +1,3 @@
-import { error } from "console";
 export class Render {
     templateId;
     rootId;

@@ -48,34 +48,10 @@ const renderCalculaton = (height, weight) => {
     const bmi1 = new BMIClass(height, weight);
     const BMI = bmi1.BMI_Value;
     const Condition = bmi1.Condition;
-    // const output = document.createElement("div");
-    // output.className = "BMI-calculated";
-    // output.innerHTML = `
-    //     <h2>Your BMI: ${BMI.toFixed(1)} and it's ${Condition}</h2>
-    // `;
-    // const output2 = document.createElement("div");
-    // output2.className = "BMI-calculated";
-    // output2.id = "grid-canvas";
-    // output2.innerHTML = `
-    //     <canvas id="canvas" width="400px" height="200px"></canvas>
-    //     <p>*Visualisation is imperfect, please go by your BMI</p>`;
-    // const listRoot = document.getElementById("entry")!;
-    // if (listRoot.hasChildNodes()) {
-    //   listRoot.innerHTML = "";
-    // }
-    // listRoot.append(output);
-    // listRoot.append(output2);
-    const html1 = `<h2>Your BMI: ${BMI.toFixed(1)} and it's ${Condition}</h2>`;
-    const html2 = `<canvas id="canvas" width="400px" height="200px"></canvas>
-  <p>*Visualisation is imperfect, please go by your BMI</p>`;
-    const htmlUnderweight = `Being underweight means your body mass is below the range normally required for good health. Your body may lack the nutrition it needs to maintain its tissues and functions. If your BMI is below 18.5, you should see a healthcare provider for testing. Having underweight can cause serious health risks or be a sign of a serious underlying condition.`;
-    const htmlOverweight = `Being overweight is having more body fat than is considered healthy. Being overweight is especially common where food supplies are plentiful and lifestyles are sedentary. `;
-    const htmlObese = `Obesity is a medical condition, considered by multiple organizations to be a disease, in which excess body fat has accumulated to such an extent that it can have negative effects on health. Obesity is a leading preventable cause of death worldwide. <br><b>Please go to your doctor!<b><br>`;
-    // console.log(Condition);
     new Render("tpl-bmi-result", "entry", BMI, Condition);
     // new Render("grid-canvas");
     const canvas = document.getElementById("canvas");
-    // drawBoard(canvas.width, canvas.height, canvas, height, weight);
+    drawBoard(canvas.width, canvas.height, canvas, height, weight);
     if (Condition === "Underweight") {
         new Render("tpl-info-underweight", "InfoEntry");
     }
