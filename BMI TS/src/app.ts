@@ -73,14 +73,14 @@ const renderCalculaton = (height: number, weight: number) => {
   }
 };
 
-class RenderCalculaton {
-  BMI: number;
-  Condition: string;
-  constructor(public height: number, public weight: number) {
-    const BMICalc = new BMIClass(this.height, this.weight);
-    this.BMI = BMICalc.BMI_Value;
-    this.Condition = BMICalc.Condition;
-  }
-}
+// class RenderCalculaton {
+//   BMI: number;
+//   Condition: string;
+//   constructor(public height: number, public weight: number) {
+//     const BMICalc = new BMIClass(this.height, this.weight);
+//     this.BMI = BMICalc.BMI_Value;
+//     this.Condition = BMICalc.Condition;
+//   }
+// }
 
 new App();
