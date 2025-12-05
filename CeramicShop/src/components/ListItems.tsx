@@ -1,14 +1,18 @@
 import { useState } from "react";
 
-function ListItems() {
-  const items = ["Clay", "Tools", "Clay wheel", "Glaze"];
+interface Props {
+  items: string[];
+  heading: string;
+}
+
+function ListItems({ items, heading }: Props) {
   // const handleClick = (event: React.MouseEvent) => console.log(event);
   const [sellectedIndex, setSelectedIndex] = useState(-1);
 
   return (
     // Using shortcut to add Fragment
     <>
-      <h1>List</h1>
+      <h1>{heading}</h1>
       {/* {items.length === 0 ? <p>No item found</p> : null} */}
       {items.length === 0 && <p>No item found</p>}
       <ul className="list-group">
